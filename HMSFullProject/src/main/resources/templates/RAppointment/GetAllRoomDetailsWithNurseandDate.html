@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Room List With Date</title>
+    <link rel="stylesheet" href="/RCSS/styles.css" />
+</head>
+<body>
+
+    <div class="container">
+        <h1>Room List With Nurse And Date</h1>
+
+        <!-- Form to input Nurse ID and Date -->
+        <form th:action="@{/thyme/appointment/room/nurseidwithdate}" method="get">
+            <label for="nurseid">Nurse ID:</label>
+            <input type="number" min="1" id="nurseid" name="nurseid" required />
+            
+            <label for="date">Date:</label>
+            <input type="text" id="date" name="date" required />
+            
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Display message if there is one -->
+        <div th:if="${message != null}" class="message">
+            <p th:text="${message}"></p>
+        </div>
+
+        <!-- Display room details if rooms are not null -->
+        <div th:if="${rooms != null}">
+            <h2>Room Detail List:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Room Number</th>
+                        <th>Room Type</th>
+                        <th>Block with Floor and Code</th>
+                        <th>Unavailable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="room : ${rooms}">
+                        <td th:text="${room.roomNumber}"></td>
+                        <td th:text="${room.roomType}"></td>
+                        <td th:text="${room.block}"></td>
+                        <td th:text="${room.unavailable}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="navigation">
+             <a href="/r-home">Back to Home</a>
+            <a href="/AllgetEndPoints">Go Back</a>
+        </div>
+    </div>
+
+</body>
+</html>
+
+

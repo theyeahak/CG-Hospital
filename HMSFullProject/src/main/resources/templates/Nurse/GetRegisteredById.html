@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nurse Registration</title>
+      <link rel="stylesheet" href="/RCSS/styles.css" />
+</head>
+<body>
+<div class="container">
+    <h1>Nurse Registration Status</h1>
+    
+ <form th:action="@{/thyme/nurse/registered}" method="get">
+    <label for="empid">Employee ID:</label>
+    <input type="number" min="1" id="empid" name="empid" required/>
+    <button type="submit">Search</button>
+</form>
+    <!-- Display message if there is one -->
+        <div th:if="${message != null}" class="message">
+            <p th:text="${message}"></p>
+        </div>
+    
+   <div th:if="${registered != null}">
+        <h2>Result:</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Registered</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${empid}"></td>
+                    <td th:text="${registered}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+     <div>
+     <a href="/home"> Go Back  </a>
+    </div>
+</div>
+</body>
+</html>

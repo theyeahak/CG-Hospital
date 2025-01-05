@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Procedure Cost By Id</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        width: 80%;
+        max-width: 900px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    h3 {
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .message {
+        color: red;
+        font-weight: bold;
+    }
+    .cta-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        text-decoration: none;
+        background-color: #004aad;
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .cta-button:hover {
+        background-color: #003d8f;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h3>Procedure Cost By Id</h3>
+    
+    <!-- Form to input procedure ID -->
+<form th:action="@{/thyme/procedure/cost}" method="get">
+<label for="id"> ID:</label>
+<input type="text" id="id" name="id" required />
+<button type="submit">Search</button>
+</form>
+ 
+    <!-- Display message if there is one -->
+<div th:if="${message != null}">
+<p class="message" th:text="${message}"></p>
+</div>
+ 
+    <!-- Display procedure details if procedureID is not null -->
+<div th:if="${procedureCostByID != null and #lists.size(procedureCostByID) > 0}">
+<h2>Procedure Details:</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>cost</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="procedure : ${procedureCostByID}">
+<td th:text="${procedureCostByID.code}"></td>
+<td th:text="${procedureCostByID.name}"></td>
+<td th:text="${procedureCostByID.cost}"></td>
+</tr>
+</tbody>
+</table>
+</div>
+     <a href="/home" class="cta-button"> Go Back  </a>
+   
+ 
+</body>
+</html>
+

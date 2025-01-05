@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Appointment</title>
+    <link rel="stylesheet" href="/RCSS/add.css" />
+</head>
+<body>
+
+<div class="container">
+    <h1>Add Appointment</h1>
+    
+     <!-- Display success or error messages -->
+    <div th:if="${message != null}" class="message">
+        <p th:text="${message}"></p>
+    </div>
+
+  
+    <!-- Form to add a new appointment -->
+    <form th:action="@{/thyme/add/appointment}" method="post" th:object="${appointment}">
+    
+        <div class="form-group">
+            <label for="appointmentID">Appointment ID:</label>
+            <input type="number" min="1" id="appointmentID" name="appointmentID" th:field="*{appointmentID}" />
+        </div>
+
+        <div class="form-group">
+            <label for="patient">Patient:</label>
+            <input type="number" min="1" id="patient" name="patient" th:field="*{patient}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="prepNurse">PrepNurse:</label>
+            <input type="number" min="1" id="prepNurse" name="prepNurse" th:field="*{prepNurse}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="physician">physician:</label>
+            <input type="number"  min="1" id="physician" name="physician" th:field="*{physician}" required>
+                
+        </div>
+
+        <div class="form-group">
+            <label for="start">Starto:</label>
+            <input type="text" id="start" name="start" th:field="*{start}" required />
+        </div>
+        <div class="form-group">
+            <label for="end">Endo:</label>
+            <input type="text" id="end" name="end" th:field="*{end}" required />
+        </div>
+         <div class="form-group">
+            <label for="examinationRoom">ExaminationRoom:</label>
+            <input type="text" pattern="[A-Za-z]+" id="examinationRoom" name="examinationRoom" th:field="*{examinationRoom}" required />
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Add Appointmnet</button>
+        </div>
+    </form>
+    
+</div>
+  <!-- Display success or error messages -->
+    <div th:if="${message != null}" class="message">
+        <p th:text="${message}"></p>
+    </div>
+
+    <a href="/home">Back to Home</a>
+ <div>
+   <a href="/AllpostEndPoints"> Go Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View Appointments</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .message {
+            color: green;
+            font-weight: bold;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #004aad;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .cta-button:hover {
+            background-color: #003d8f;
+        }
+        .container {
+            width: 80%;
+            max-width: 900px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Status of Your Appointment Record</h1>
+        
+        <!-- Display success or error messages -->
+        <div th:if="${message != null}" class="message">
+            <p th:text="${message}"></p>
+        </div>
+
+        <!-- Check if there are appointments to display -->
+        <div th:if="${appointments != null && !appointments.isEmpty()}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Appointment ID</th>
+                        <th>Patient</th>
+                        <th>Prep Nurse</th>
+                        <th>Physician</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Examination Room</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Iterate over the list of appointments -->
+                    <tr th:each="appointment : ${appointments}">
+                        <td th:text="${appointment.appointmentID}"></td>
+                        <td th:text="${appointment.patient}"></td>
+                        <td th:text="${appointment.prepNurse}"></td>
+                        <td th:text="${appointment.physician}"></td>
+                        <td th:text="${appointment.start}"></td>
+                        <td th:text="${appointment.end}"></td>
+                        <td th:text="${appointment.examinationRoom}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+      
+            <p>Thank You</p>
+       
+
+        <!-- Navigation buttons -->
+        <a href="/home" class="cta-button">Back to Home</a>
+    </div>
+</body>
+</html>

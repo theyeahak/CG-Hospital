@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Nurse</title>
+    <link rel="stylesheet" href="/RCSS/add.css" />
+</head>
+<body>
+
+<div class="container">
+    <h1>Add Nurse</h1>
+
+    <!-- Display success or error messages -->
+    <div th:if="${message != null}" class="message">
+        <p th:text="${message}"></p>
+    </div>
+
+    <!-- Form to add a new nurse -->
+    <form th:action="@{/thyme/add/nurse}" method="post" th:object="${nurse}">
+        <div class="form-group">
+            <label for="employeeID">Employee ID:</label>
+            <input type="number" min="1" id="employeeID" name="employeeID" th:field="*{employeeID}" />
+        </div>
+
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" pattern="[A-Za-z ]+"  id="name"  name="name" th:field="*{name}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="position">Position:</label>
+            <input type="text" pattern="[A-Za-z ]+" id="position" name="position" th:field="*{position}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="registered">Registered:</label>
+            <select id="registered" name="registered" th:field="*{registered}" required>
+                <option value="true">true</option>
+                <option value="false">false</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="ssn">SSN:</label>
+            <input type="number" min="1" id="ssn" name="ssn" th:field="*{ssn}" required />
+        </div>
+
+        <div class="form-group">
+            <button type="submit">Add Nurse</button>
+        </div>
+    </form>
+</div>
+
+ <div>
+   <a href="/home"> Go Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Patient Details</title>
+    <link rel="stylesheet" href="/RCSS/styles.css" />
+</head>
+<body>
+<div class="container">
+    <h1> List Patient Detail With Nurse And Date</h1>
+
+    <!-- Form to input Nurse ID and Date -->
+    <form th:action="@{/thyme/appointment/patients/nurseidwithdate}" method="get">
+        <label for="nurseid">Nurse ID:</label>
+        <input type="number" min="1" id="nurseid" name="nurseid" required />
+        
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required />
+        
+        <button type="submit">Search</button>
+    </form>
+
+   <!-- Display message if there is one -->
+        <div th:if="${message != null}" class="message">
+            <p th:text="${message}"></p>
+        </div>
+
+    <!-- Display patient details if patients is not null -->
+    <div th:if="${patients != null}">
+        <h2>Patient Detail List:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>SSN</th>
+                    <th>NAME</th>
+                    <th>ADDRESS</th>
+                    <th>PHONE</th>
+                    <th>INSURANCE ID</th>
+                  
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="patient : ${patients}">
+                    <td th:text="${patient.ssn}"></td>
+                    <td th:text="${patient.name}"></td>
+                    <td th:text="${patient.address}"></td>
+                    <td th:text="${patient.phone}"></td>
+                    <td th:text="${patient.insuranceID}"></td>
+           
+                </tr> 
+            </tbody>
+        </table>
+    </div>
+ <div>
+       <a href="/r-home">Back to Home</a>
+        <a href="/AllgetEndPoints">Go Back</a>
+    </div>
+</div>
+</body>
+</html>

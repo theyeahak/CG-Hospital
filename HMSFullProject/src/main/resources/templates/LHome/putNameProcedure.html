@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>procedure update</title>
+<style>
+   body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        width: 80%;
+        max-width: 900px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    h3 {
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .message {
+        color: red;
+        font-weight: bold;
+    }
+    .cta-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        text-decoration: none;
+        background-color: #004aad;
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .cta-button:hover {
+        background-color: #003d8f;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+<body>
+
+
+    <h3>Successfully updated Procedure</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Cost</th>
+            </tr>
+        </thead>
+<tbody>
+<tr>
+<td  th:text="${procedure.code}"> </td>
+<td th:text="${procedure.name}"> </td>
+<td  th:text="${procedure.cost}"> </td>
+
+</tr>
+</tbody>
+</table>
+<a href="/home" class="cta-button">Go Back</a>
+   
+
+</div>
+ 
+
+   
+<!-- Display message if there is one -->
+<div th:if="${message != null}">
+    <p class="message" th:text="${message}"></p>
+</div>
+
+</body>
+</html>

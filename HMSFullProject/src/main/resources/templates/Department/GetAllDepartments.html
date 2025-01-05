@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Department List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        table {
+            width: 80%; /* Adjust the width as needed */
+            max-width: 800px; /* Optional: Maximum width for larger screens */
+            border-collapse: collapse;
+            margin-bottom: 20px; /* Space below the table */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .back-link a {
+            text-decoration: none;
+            color: #004aad;
+            font-size: 16px;
+            border: 1px solid #004aad;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .back-link a:hover {
+            background-color: #004aad;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h3>All Departments</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>DepartmentID</th>
+                <th>Name</th>
+                <th>Head</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Correctly reference the list of departments -->
+            <tr th:each="department : ${departments}">
+                <td th:text="${department.departmentID}">Department ID</td>
+                <td th:text="${department.name}">Name</td>
+                <td th:text="${department.head.employeeID}">Employee ID</td> 
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="back-link">
+        <a href="/home">Go Back</a>
+    </div>
+</body>
+</html>

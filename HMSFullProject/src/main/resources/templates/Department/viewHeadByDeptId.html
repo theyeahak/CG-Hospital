@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Physicians Affiliated With DeptId</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+        }
+        h3, h2 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            padding: 8px;
+            margin: 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #004aad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #003d8f;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .message {
+            color: red;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #004aad;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            background-color: #003d8f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Physician By DeptId</h3>
+
+        <!-- Form to input Department ID -->
+        <form th:action="@{/thyme/department/head}" method="get">
+            <label for="deptid">Department ID:</label>
+            <input type="number" id="deptid" name="deptid" required />
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Display message if there is one -->
+        <div th:if="${message != null}">
+            <p class="message" th:text="${message}"></p>
+        </div>
+
+        <!-- Display physician details if physicians is not null -->
+        <div th:if="${physician != null and #lists.size(physician) > 0}">
+            <h2>Physician Details:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee ID</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>SSN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="physician : ${physician}">
+                        <td th:text="${physician.employeeID}"></td>
+                        <td th:text="${physician.name}"></td>
+                        <td th:text="${physician.position}"></td>
+                        <td th:text="${physician.ssn}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="/home" class="cta-button">Go Back</a>
+    </div>
+</body>
+</html>

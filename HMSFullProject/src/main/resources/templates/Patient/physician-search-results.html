@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Physicians Results</title>
+    <!-- You can also link an external stylesheet here if preferred -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+        a:hover {
+            color: #4CAF50;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Physicians Associated with Patient</h2>
+
+        <!-- Display error message if patient is not found -->
+        <div th:if="${errorMessage != null}" class="error">
+            <p th:text="${errorMessage}"></p>
+        </div>
+
+        <!-- Display physicians list if available -->
+        <div th:if="${physicians != null}">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Physician ID</th>
+                        <th>Name</th>
+                        <th>Position</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="physician : ${physicians}">
+                        <td th:text="${physician.employeeID}"></td>
+                        <td th:text="${physician.name}"></td>
+                        <td th:text="${physician.position}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="/appointment/physician/form">Back to Form</a>
+    </div>
+</body>
+</html>

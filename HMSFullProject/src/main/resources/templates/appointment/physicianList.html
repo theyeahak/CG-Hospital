@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Physician Details</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: gold;
+            font-size: 48px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .details {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        p strong {
+            color: gold;
+        }
+
+        .footer {
+            margin-top: 50px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        hr {
+            border: 1px solid gold;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Physician Details</h1>
+
+        <!-- Displaying the physician details -->
+        <div class="details" th:if="${physician != null}">
+            <p><strong>Name:</strong> <span th:text="${physician.name}"></span></p>
+            <p><strong>Employee ID:</strong> <span th:text="${physician.employeeID}"></span></p>
+            <p><strong>Position:</strong> <span th:text="${physician.position}"></span></p>
+            <p><strong>SSN:</strong> <span th:text="${physician.ssn}"></span></p>
+        </div>
+
+        <div th:if="${physician == null}">
+            <p>No physician found for the given Appointment ID.</p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Hospital Management System</p>
+        </div>
+    </div>
+</body>
+</html>

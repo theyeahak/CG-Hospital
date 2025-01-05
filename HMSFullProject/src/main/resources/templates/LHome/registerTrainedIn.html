@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register TrainedIn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 80%;
+            max-width: 900px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h3 {
+            color: #333;
+        }
+        .form-container {
+            margin-top: 20px;
+            text-align: left; /* Align form fields to the left */
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], input[type="datetime-local"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #004aad;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #003d8f;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #004aad;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        .cta-button:hover {
+            background-color: #003d8f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Give TrainedIn Details</h3>
+        <div class="form-container">
+            <form th:action="@{/thyme/postTrainedin}" method="post" th:object="${trainedin}">
+                <label for="physician">Physician ID:</label>
+                <input type="text" id="physician" th:field="*{id.physician}" required />
+                <label for="treatment">Treatment ID:</label>
+                <input type="text" id="treatment" th:field="*{id.treatment}" required />
+                <label for="certificationDate">Certification Start Date:</label>
+                <input type="datetime-local" id="certificationDate" th:field="*{certificationDate}" required />
+                <label for="certificationExpires">Certification Expire Date:</label>
+                <input type="datetime-local" id="certificationExpires" th:field="*{certificationExpires}" required />
+                <button type="submit">Add Trained In</button>
+            </form>
+        </div>
+        <a href="/home" class="cta-button">Go Back</a>
+        
+    </div>
+</body>
+</html>

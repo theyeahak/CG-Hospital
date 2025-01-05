@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Department List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+        }
+        h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #004aad;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .cta-button:hover {
+            background-color: #003d8f;
+        }
+        .message {
+            color: red;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>Department Details</h3>
+        
+        <form th:action="@{/thyme/department}" method="get">
+            <label for="deptid">Department ID:</label>
+            <input type="number" id="deptid" name="deptid" required />
+            <button type="submit">Search</button>
+        </form>
+        
+        <!-- Display message if there is one -->
+        <div th:if="${message != null}" class="message">
+            <p th:text="${message}"></p>
+        </div>
+        
+        <!-- Display result in a table format -->
+        <table th:if="${department != null}">
+            <thead>
+                <tr>
+                    <th>DepartmentID</th>
+                    <th>Name</th>
+                    <th>Head</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="department : ${department}">
+                    <td th:text="${department.departmentID}"></td>
+                    <td th:text="${department.name}"></td>
+                    <td th:text="${department.head.employeeID}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Link to go back to the home page -->
+        <a href="/homes" class="cta-button">Go Back</a>
+    </div>
+</body>
+</html>

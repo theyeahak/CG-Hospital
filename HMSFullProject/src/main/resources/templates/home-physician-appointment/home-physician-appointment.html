@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Appointment Management</title>
+    <style>
+        body {
+            background-color: #000; /* Black background */
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        h1 {
+            color: orange; /* Gold color for the header */
+            font-size: 110px;
+            margin: 50px 0;
+            letter-spacing: 2px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin: 20px 0;
+        }
+
+        a {
+            color: white; /* White color for links */
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+			opacity: 0.6;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        a:hover {
+            color: orange;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.9);
+        }
+
+        .footer {
+            margin-top: 100px;
+            color: #ccc;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HOSPITAL MANAGMENT SYSTEM</h1>
+
+        <ul>
+            <li><a th:href="@{/home/physician/}">Physician</a></li>
+            <li><a th:href="@{/home/appointment-home/}">Appointment</a></li>
+        </ul>
+
+        <div class="footer">
+            <p>&copy; 2024 Hospital Management System</p>
+        </div>
+    </div>
+</body>
+</html>

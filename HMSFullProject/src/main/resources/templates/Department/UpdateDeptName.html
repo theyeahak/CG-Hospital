@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Update Department Name</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column; /* Arrange content in a column layout */
+        justify-content: center; /* Center content vertically */
+        align-items: center; /* Center content horizontally */
+        height: 100vh; /* Full viewport height */
+    }
+    h3 {
+        color: #333;
+        text-align: center; /* Center-align the heading text */
+    }
+    .container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        text-align: center; /* Center-align the text inside container */
+        margin-bottom: 20px; /* Space between container and button */
+    }
+    form {
+        margin-bottom: 20px; /* Add space between form and button */
+    }
+    label {
+        display: block;
+        margin: 10px 0 5px; /* Space between label and input */
+    }
+    input[type="text"] {
+        width: calc(100% - 20px); /* Adjust width for padding */
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    input[type="submit"] {
+        padding: 10px 20px;
+        border: none;
+        background-color: #004aad;
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #003d8f;
+    }
+    .cta-button {
+        padding: 10px 20px;
+        text-decoration: none;
+        background-color: #004aad;
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .cta-button:hover {
+        background-color: #003d8f;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h3>Update Department Name</h3>
+    <form th:action="@{/thyme/department/update/deptname}" method="post">
+        <label for="departmentID">DepartmentID:</label>
+        <input type="text" id="departmentID" name="departmentID" required>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <input type="submit" value="Update Name">
+    </form>
+</div>
+<a href="/home" class="cta-button">Go Back</a>
+</body>
+</html>

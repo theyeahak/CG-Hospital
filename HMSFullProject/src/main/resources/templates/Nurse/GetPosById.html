@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Nurse Position</title>
+      <link rel="stylesheet" href="/RCSS/styles.css" />
+</head>
+<body>
+<div class="container">
+    <h1>Search Nurse Position</h1>
+  
+ <form th:action="@{/thyme/nurse/position}" method="get">
+    <label for="empid">Employee ID:</label>
+    <input type="number" min="1"  id="empid" name="empid" required/>
+    <button type="submit">Search</button>
+</form>
+    <!-- Display message if there is one -->
+        <div th:if="${message != null}" class="message">
+            <p th:text="${message}"></p>
+        </div>
+
+    <!-- Display results table if there is a result -->
+    <div th:if="${position != null}">
+        <h2>Result:</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Position</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${empid}"></td>
+                    <td th:text="${position}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+     <div>
+     <a href="/home"> Go Back  </a>
+    </div>
+</div>
+</body>
+</html>

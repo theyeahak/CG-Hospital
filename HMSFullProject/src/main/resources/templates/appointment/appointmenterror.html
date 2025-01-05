@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Room Update Confirmation</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: gold;
+            font-size: 48px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .message {
+            font-size: 24px;
+            color: #ccc;
+        }
+
+        .footer {
+            margin-top: 50px;
+            color: #ccc;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Room Update Confirmation</h1>
+
+        <p class="message" th:text="${message}"></p>
+
+        <div class="footer">
+            <p>&copy; 2024 Hospital Management System</p>
+        </div>
+    </div>
+</body>
+</html>

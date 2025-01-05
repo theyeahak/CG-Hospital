@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Examination Room</title>
+    <link rel="stylesheet" href="/RCSS/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Search Examination Room</h1>
+  
+ <form th:action="@{/thyme/appointment/examinationroom/appointmentid}" method="get">
+    <label for="appointmentid">Appointment ID:</label>
+    <input type="number" min="1" id="appointmentid" name="appointmentid" required/>
+    <button type="submit">Search</button>
+</form>
+    <!-- Display message if there is one -->
+        <div th:if="${message != null}" class="message">
+            <p th:text="${message}"></p>
+        </div>
+
+    <!-- Display results table if there is a result -->
+    <div th:if="${room != null}">
+        <h2>Result:</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Appointment ID</th>
+                    <th>Examination Room</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${appointmentid}"></td>
+                    <td th:text="${room}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+     
+      <div>
+      <a href="/r-home">Back to Home</a>
+     <a href="/AllgetEndPoints"> Go Back  </a>
+    </div>
+  </div>
+</body>
+</html>

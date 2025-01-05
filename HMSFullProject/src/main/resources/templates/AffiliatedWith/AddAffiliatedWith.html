@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Affiliated With</title>
+<style>
+    .container {
+        width: 50%;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    input {
+        width: calc(100% - 22px); /* Adjust for padding and border */
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    button {
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 10px 20px; /* Decreased padding for smaller size */
+        font-size: 14px; /* Decreased font size */
+        border-radius: 5px;
+        margin: 10px; /* Add margin for spacing */
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .button-container,
+    .go-back-container {
+        text-align: center; /* Center the buttons horizontally */
+        margin-top: 20px;
+    }
+
+    .go-back-button {
+        display: inline-block;
+        padding: 10px 20px; /* Adjust size to match the submit button */
+        font-size: 14px; /* Match the font size */
+        background-color: #004aad; /* Background color */
+        color: white; /* Text color */
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .go-back-button:hover {
+        background-color: #003d8f;
+    }
+
+    .message {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Affiliated With</h2>
+        <!-- Display Success Message -->
+        <div class="message">
+            <!-- This is where the success message will appear -->
+            <p th:text="${message}"></p>
+        </div>
+
+        <form id="affiliatedForm" action="/thyme/affiliated_with/post" method="post">
+            <input type="number" id="physician" name="physician" placeholder="Physician ID" required> <br>
+            <input type="number" id="department" name="department" placeholder="Department ID" required> <br>
+            <input type="text" id="primaryAffiliation" name="primaryAffiliation" placeholder="Primary Affiliation" required> <br>
+            <div class="button-container">
+                <button type="submit" class="button">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Go Back Button -->
+    <div class="go-back-container">
+        <a href="/home" class="go-back-button">Go Back</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Update Nurse Registration Status</title>
+     <link rel="stylesheet" href="/RCSS/styles.css" />
+  
+</head>
+<body>
+   <div class="container">
+        <h1>Update Nurse Registration Status</h1>
+        <form th:action="@{/thyme/nurse/registered/sucess}" method="post">
+            <label for="empid">Employee ID:</label>
+            <input type="number" min="1" id="empid" name="empid" required>
+ 
+               <label for="registered">Registered:</label>
+            <select id="registered" name="registered"  required>
+                <option value="true">true</option>
+                <option value="false">false</option>
+            </select>
+
+            <input type="submit" value="Update Registered">
+        </form>
+        
+        
+      <!-- Display message if there is one -->
+        <div th:if="${message != null}" class="message">
+            <p th:text="${message}"></p>
+        </div>
+   
+    <div th:if="${nurse != null}">
+        <h1>Nurse Registration Updated Successfully</h1>
+        <p>The following nurse's registration has been updated:</p>
+ 
+      
+        <h2>Nurse Detail:</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Name:</th>
+                    <th>Position:</th>
+                    <th>Registered</th>
+                    <th>SSN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td  th:text="${nurse.employeeID}"> </td>
+                    <td th:text="${nurse.name}"> </td>
+                    <td  th:text="${nurse.position}"> </td>
+                    <td  th:text="${nurse.registered ? 'true' : 'false'}"> </td>
+                    <td th:text="${nurse.ssn}"> </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        <div>
+         	<a href="/home">Go Back </a>
+   </div>    
+   </div>    
+</body>
+</html>
+

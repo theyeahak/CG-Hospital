@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Appointments by Start Date</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        width: 80%;
+        max-width: 900px;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+    h3 {
+        color: #333;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .message {
+        color: red;
+        font-weight: bold;
+    }
+    .cta-button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 20px;
+        text-decoration: none;
+        background-color: #004aad;
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .cta-button:hover {
+        background-color: #003d8f;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h3>Appointments by Start Date</h3>
+
+<!-- Form to input physician ID -->
+<form th:action="@{/thyme/startappointment}" method="get">
+    <label for="startdate">Start Date:</label>
+ <input type="text" id="startdate" name="startdate" placeholder="yyyy-MM-dd'T'HH:mm:ss" required />    
+ <button type="submit">Search</button>
+</form>
+
+<!-- Display message if there is one -->
+<div th:if="${message != null}">
+    <p class="message" th:text="${message}"></p>
+</div>
+
+<!-- Display procedure details if procedures are available -->
+<div th:if="${appointmentsByStartdate != null and #lists.size(appointmentsByStartdate) > 0}">
+    <h2>Apppointments</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Appointment ID</th>
+                <th>Patient</th>
+                <th>Prep Nurse</th>
+                <th>Physician</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Examination Room</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterate through the list of appointments filtered by start date -->
+            <tr th:each="appointment : ${appointmentsByStartdate}">
+                <td th:text="${appointment.appointmentID}">Appointment ID</td>
+                <td th:text="${appointment.patient.ssn}">Patient</td>
+                <td th:text="${appointment.prepNurse != null ? appointment.prepNurse.employeeID : 'N/A'}">Prep Nurse</td>
+                <td th:text="${appointment.physician != null ? appointment.physician.employeeID : 'N/A'}">Physician</td>
+                <td th:text="${appointment.start}">Start Date</td>
+                <td th:text="${appointment.end}">End Date</td>
+                <td th:text="${appointment.examinationRoom}">Examination Room</td>
+            </tr>
+        </tbody>
+    </table>
+        <a href="/home" class="cta-button"> Go Back  </a>
+       
+
+
+</body>
+</html>

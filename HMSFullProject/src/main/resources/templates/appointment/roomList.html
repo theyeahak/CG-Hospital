@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Room Details</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: gold;
+            font-size: 48px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        .details {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        p {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        p strong {
+            color: gold;
+        }
+
+        .footer {
+            margin-top: 50px;
+            color: #ccc;
+            font-size: 14px;
+        }
+
+        hr {
+            border: 1px solid gold;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Room Details</h1>
+
+        <!-- Displaying the list of rooms assigned to the physician -->
+        <div class="details" th:each="room : ${rooms}">
+            <p><strong>Room Number:</strong> <span th:text="${room.RoomNumber}"></span></p>
+            <p><strong>Room Type:</strong> <span th:text="${room.RoomType}"></span></p>
+            <p><strong>Block:</strong> <span th:text="${room.block}"></span></p>
+            <p><strong>Status:</strong> <span th:text="${room.unavailable}"></span></p>
+            <hr>
+        </div>
+
+        <div th:if="${rooms.size() == 0}">
+            <p>No rooms found for the given Physician ID and Date.</p>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Hospital Management System</p>
+        </div>
+    </div>
+</body>
+</html>

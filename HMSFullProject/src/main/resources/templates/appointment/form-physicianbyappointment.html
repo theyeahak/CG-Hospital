@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Get Physician by Appointment ID</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 50%;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        h1 {
+            color: gold;
+            font-size: 48px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        form {
+            display: inline-block;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+        }
+
+        label {
+            font-size: 24px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="number"] {
+            font-size: 20px;
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: gold;
+            color: #000;
+            font-size: 24px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ffd700;
+        }
+
+        .footer {
+            margin-top: 50px;
+            color: #ccc;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Get Physician by Appointment ID</h1>
+
+        <!-- Form to submit appointment ID -->
+        <form action="/appointment/getPhysicianByAppointment" method="get">
+            <label for="appointmentId">Enter Appointment ID:</label>
+            <input type="number" id="appointmentId" name="appointmentId" required>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="footer">
+            <p>&copy; 2024 Hospital Management System</p>
+        </div>
+    </div>
+</body>
+</html>

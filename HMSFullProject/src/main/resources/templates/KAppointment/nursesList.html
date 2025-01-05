@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nurse List</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dddddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Link Styles */
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nurse List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Registered</th>
+                <th>SSN</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="nurse : ${nurses}">
+                <td th:text="${nurse.employeeID}"></td>
+                <td th:text="${nurse.name}"></td>
+                <td th:text="${nurse.position}"></td>
+                <td th:text="${nurse.registered} ? 'Yes' : 'No'"></td>
+                <td th:text="${nurse.ssn}"></td>
+            </tr>
+        </tbody>
+    </table>
+   
+    <a href="#" th:href="@{/home}">Back to Home</a>
+</body>
+</html>

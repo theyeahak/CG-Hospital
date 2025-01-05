@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Department Head Update</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f4f4f4;
+        text-align: center; /* Center all text and inline elements */
+    }
+    h3 {
+        color: #333;
+    }
+    .container {
+        display: inline-block; /* Allows centering of block elements */
+        text-align: left; /* Align text inside container to the left */
+        background-color: white; /* Optional: to make the table stand out */
+        padding: 20px; /* Optional: adds padding inside the container */
+        border-radius: 8px; /* Optional: rounded corners for the container */
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    .message {
+        color: red;
+        font-weight: bold;
+    }
+    .cta-button-container {
+        margin-top: 20px; /* Add space between the container and the button */
+    }
+    .cta-button {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        background-color: #004aad;
+        color: white;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    .cta-button:hover {
+        background-color: #003d8f;
+    }
+</style>
+</head>
+<body>
+<h3>Successfully updated Department Head</h3>
+<div class="container">
+    <table>
+        <thead>
+        <tr>
+            <th>departmentID</th>
+            <th>Name</th>
+            <th>Head</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td th:text="${department.departmentID}"> </td>
+            <td th:text="${department.name}"> </td>
+            <td th:text="${department.head.employeeID}"> </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<!-- Button centered and placed below the container -->
+<div class="cta-button-container">
+    <a href="/home" class="cta-button">Go Back</a>
+</div>
+</body>
+</html>

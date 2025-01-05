@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Patients</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>Search Patients by Physician and Patient ID</h2>
+
+    <!-- Form to enter Physician ID and Patient ID -->
+    <form action="/search" method="get">
+        <label for="physicianId">Physician ID:</label>
+        <input type="number" id="physicianId" name="physicianId" required>
+        <label for="patientId">Patient ID (optional):</label>
+        <input type="number" id="patientId" name="patientId">
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Display error message if any -->
+    <div th:if="${errorMessage != null}" class="error">
+        <p th:text="${errorMessage}"></p>
+    </div>
+
+    <!-- Table to display patients, if available -->
+    <div th:if="${patients != null}">
+        <h3>Patients by Physician</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>SSN</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Insurance ID</th>
+                    <th>PCP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="patient : ${patients}">
+                    <td th:text="${patient.name}"></td>
+                    <td th:text="${patient.ssn}"></td>
+                    <td th:text="${patient.address}"></td>
+                    <td th:text="${patient.phone}"></td>
+                    <td th:text="${patient.insuranceID}"></td>
+                    <td th:text="${patient.pcp.name}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Display patient details if available -->
+    <div th:if="${patient != null}">
+        <h3>Patient Details</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>SSN</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>Insurance ID</th>
+                    <th>PCP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${patient.name}"></td>
+                    <td th:text="${patient.ssn}"></td>
+                    <td th:text="${patient.address}"></td>
+                    <td th:text="${patient.phone}"></td>
+                    <td th:text="${patient.insuranceID}"></td>
+                    <td th:text="${patient.pcp.name}"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+   
+</body>
+</html>
