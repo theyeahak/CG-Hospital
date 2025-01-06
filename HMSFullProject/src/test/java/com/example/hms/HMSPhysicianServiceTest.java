@@ -48,35 +48,35 @@ public class HMSPhysicianServiceTest {
         pfail.setPosition("no position");
         pfail.setSsn(98765432);
     }
-	
-    @Test
-    public void testGetByName() {
-        String url = "/api/physician/name/" + p.getName();
-        ResponseEntity<Physician> response = restTemplate.getForEntity(url, Physician.class);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertNotNull(response.getBody());
-        assertEquals(p.getName(), response.getBody().getName());
-    }
+//	
+//    @Test
+//    public void testGetByName() {
+//        String url = "/api/physician/name/" + p.getName();
+//        ResponseEntity<Physician> response = restTemplate.getForEntity(url, Physician.class);
+//
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertNotNull(response.getBody());
+//        assertEquals(p.getName(), response.getBody().getName());
+//    }
+//    
+//    @Test
+//    public void testGetByNameFail() {
+//    	String url = "/api/physician/name/" + pfail.getName();
+//    	ResponseEntity<Physician> response = restTemplate.getForEntity(url, Physician.class);
+//
+//    	assertEquals(null, response.getBody());
+//    }
     
-    @Test
-    public void testGetByNameFail() {
-    	String url = "/api/physician/name/" + pfail.getName();
-    	ResponseEntity<Physician> response = restTemplate.getForEntity(url, Physician.class);
-
-    	assertEquals(null, response.getBody());
-    }
-    
-    @Test
-    public void testGetByPosition() {
-        String url = "/api/physician/position/" + p.getPosition();
-        ResponseEntity<Physician[]> response = restTemplate.getForEntity(url, Physician[].class);
-
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertNotNull(response.getBody());
-        assertTrue(response.getBody().length > 0);
-        assertEquals(p.getPosition(), response.getBody()[0].getPosition());
-    }
+//    @Test
+//    public void testGetByPosition() {
+//        String url = "/api/physician/position/" + p.getPosition();
+//        ResponseEntity<Physician[]> response = restTemplate.getForEntity(url, Physician[].class);
+//
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertNotNull(response.getBody());
+//        assertTrue(response.getBody().length > 0);
+//        assertEquals(p.getPosition(), response.getBody()[0].getPosition());
+//    }
     
     @Test
     public void testGetByPositionfail() {

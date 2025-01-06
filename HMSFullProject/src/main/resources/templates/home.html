@@ -297,9 +297,11 @@
 		         <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="patientsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Trained In</a>
                     <div class="dropdown-menu" aria-labelledby="patientsDropdown">
-                    	<a th:href="@{/thyme/trained_in/}">Get Certifications</a>
-		                <a th:href="@{/thyme/trained_in/expiredsooncerti}">Expiring Certifications</a>
-		                <a th:href="@{/register/trainedin}">Add Trained In</a>
+                    	<a th:href="@{/thyme/trained_in/}">View All Certified Procedures</a>
+                        <a th:href="@{/thyme/treatment}">View Treatments by Physician ID</a>
+                        <a th:href="@{/thyme/trained_in/physicians}">View Physicians by Procedure ID</a>
+                        <a th:href="@{/thyme/trained_in/expiredsooncerti}">View Expiring Certifications by Physician ID</a>
+                        <a th:href="@{/register/trainedin}">Add New Trained In</a>
 		             </div>
 		         </li>
 		         <li class="nav-item dropdown">
@@ -310,7 +312,7 @@
 		                <a th:href="@{/thyme/affiliated_with/countphysician}">Count Physicians by Department ID</a>
 		                <a th:href="@{/thyme/affiliated_with/primary}">Primary Affiliation by Physician ID</a>
 		                <a th:href="@{/register/affiliatedWith}">Add New Affiliation</a>
-		                <a th:href="@{/thyme/affiliated_with/post}">Submit New Affiliation</a>
+		                
 		             </div>
 		         </li>
 		         <li class="nav-item dropdown">

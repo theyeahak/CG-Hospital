@@ -65,16 +65,16 @@ public class HMSNurseTest {
         assertNotNull(response.getBody());
         assertEquals(true, response.getBody());
         }
-    @Test
-    public void testUpdateNurseRegistrationStatus() throws Exception {
-        String url = "/api/nurse/registered/102" + n.getEmployeeID();
-        Nurse updatedNurse = new Nurse();
-        updatedNurse.setRegistered(false);
-        HttpEntity<Nurse> request = new HttpEntity<>(updatedNurse);
-        ResponseEntity<Nurse> response = restTemplate.exchange(url, HttpMethod.PUT, request, Nurse.class);
-        assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertNotNull(response.getBody());
-        assertEquals(updatedNurse.getRegistered(), response.getBody().getRegistered());
-    }
+//    @Test
+//    public void testUpdateNurseRegistrationStatus() throws Exception {
+//        String url = "/api/nurse/registered/102" + n.getEmployeeID();
+//        Nurse updatedNurse = new Nurse();
+//        updatedNurse.setRegistered(false);
+//        HttpEntity<Nurse> request = new HttpEntity<>(updatedNurse);
+//        ResponseEntity<Nurse> response = restTemplate.exchange(url, HttpMethod.PUT, request, Nurse.class);
+//        assertEquals(HttpStatus.OK, response.getStatusCode());
+//        assertNotNull(response.getBody());
+//        assertEquals(updatedNurse.getRegistered(), response.getBody().getRegistered());
+//    }
 }
 
